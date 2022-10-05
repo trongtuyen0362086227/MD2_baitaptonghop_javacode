@@ -125,8 +125,8 @@ public class Product {
     }
 
     public void dispayData() {
-        System.out.printf("%-15s%-15s%-15s%-15f%-15f%-10d%-20s%-10b\n", this.ProductName, this.ProductName, this.Title,
-                this.ImportPrice, this.ExportPrice, this.Quantity, this.Depcription, this.ProductName);
+        System.out.printf("%-15s%-15s%-15s%-15f%-15f%-10d%-20s%-10b\n", this.ProductID, this.ProductName, this.Title,
+                this.ImportPrice, this.ExportPrice, this.Quantity, this.Depcription, this.ProductStatus);
         String trangThai = "";
         if (this.ProductStatus) {
             trangThai = "Con ban";

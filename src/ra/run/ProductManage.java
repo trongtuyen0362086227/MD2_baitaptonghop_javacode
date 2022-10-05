@@ -133,7 +133,7 @@ public class ProductManage {
 
     public static void displayListCatalog() {
         for (int i = 0; i < indexCatalog - 1; i++) {
-            for (int j = i+1; j < indexCatalog; j++) {
+            for (int j = i + 1; j < indexCatalog; j++) {
                 if (arrCatalog[i].getPriority() > arrCatalog[j].getPriority()) {
                     Catalog temp = arrCatalog[i];
                     arrCatalog[i] = arrCatalog[j];
@@ -254,27 +254,34 @@ public class ProductManage {
     public static void banHang(Scanner sc) {
         System.out.println("nhap ten san pham can mua");
         String sale = sc.nextLine();
-        System.out.println("so luong can mua");
-        int soluong = Integer.parseInt(sc.nextLine());
         for (int i = 0; i < indexProduct; i++) {
-            if (arrProduct[i].getProductName().equals(sale.trim()) && arrProduct[i].getQuantity() <= soluong) {
-                arrProduct[i].setQuantity(arrProduct[i].getQuantity() - soluong);
-                System.out.println("da ban hang xong");
-            } else if (arrProduct[i].getQuantity() < soluong) {
-                System.out.printf("khong du so luong %s con lai %d\n", arrProduct[i].getProductName(), arrProduct[i].getQuantity());
+            if (arrProduct[i].getProductName().equals(sale.trim())) {
+                System.out.printf("%s con lai so luong: %d\n",arrProduct[i].getProductName(),arrProduct[i].getQuantity());
+                System.out.println("so luong can mua");
+                int soluong = Integer.parseInt(sc.nextLine());
+                if (arrProduct[i].getQuantity()>=soluong){
+                    arrProduct[i].setQuantity(arrProduct[i].getQuantity()-soluong);
+                    System.out.println("da ban xong sn pham");
+                } else {
+                    System.out.println("so luong san pham con lai khong du");
+                    break;
+                }
+                break;
             } else {
-                System.out.println("khong tin thay san pham can mua\n");
+                System.out.println("khong tim thay san pham ban can mua");
+                break;
             }
         }
     }
 
+
     public static void nhapHang(Scanner sc) {
         System.out.println("nhap ten hang can nhap vao");
         String hangnhap = sc.nextLine();
-        System.out.println("so luong hang can nhap");
-        int soluongnhap = Integer.parseInt(sc.nextLine());
         for (int i = 0; i < indexProduct; i++) {
-            if (arrProduct[i].getProductName().equals(hangnhap.trim())) {
+            if (arrProduct[i].getProductName().equals(hangnhap)) {
+                System.out.println("so luong hang can nhap");
+                int soluongnhap = Integer.parseInt(sc.nextLine());
                 arrProduct[i].setQuantity(arrProduct[i].getQuantity() + soluongnhap);
                 System.out.println("da nhap hang xong");
             } else {
